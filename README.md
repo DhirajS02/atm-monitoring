@@ -157,15 +157,37 @@ As of now, we have implemented repository classes that allow for the addition of
 
 These classes facilitate the testing of the ATM Monitoring System's functionality and ensure that the core features can be validated before integrating with real data sources.
 
-## Postman Collection
 
-A Postman collection has been added to the project for testing the API endpoints.
+## 6. Configuring Postman to Run
 
-### How to use:
-1. Open Postman.
-2. Go to **Collections**.
-3. Click **Import**.
-4. Select the file `src/main/resources/postman/atm-monitoring.postman_collection.json`.
-5. Use the provided requests to test the API.
+A Postman collection and an environment json file has been added to src/resources/postman for testing the API endpoints.
+
+
+### Steps to Configure Postman
+
+### Step 1: Import Postman Collection and Environment
+
+1. **Open Postman** and click on the **Import** button in the top-left corner.
+2. **Select Files** and import both the following JSON files:
+    - **Postman Collection**: Contains all the API endpoints to test.
+    - **Environment File (`atm-monitoring.json`)**: Contains environment variables including `jwtToken`.
+3. Once imported, you will see the collection and environment available in Postman.
+
+### Step 2: Set Up the Environment
+
+1. Click on the **Environment Quick Look** (eye icon) at the top-right corner of Postman.
+2. Select the **`atm-monitoring` environment** from the dropdown. This ensures that your API requests have access to the relevant variables.
+
+### Step 3: Generate Access Token
+
+1. Locate the **`/v1/generate-token`** request inside the imported collection.
+2. Run the request by entering the following:
+    - **Parameter**: `empCode = 123456` (required for generating a JWT token). emp code=123456 has necessary roles to perform.
+3. The response will include the **JWT token**, and it will be **automatically saved** in the environment variable named `jwtToken`.
+
+### Step 4: Running Other API Requests
+
+1. Once the token has been generated and saved, it will be used automatically for authentication.
+2. Now you can run any other request within the collection, and they will use the saved token from the `jwtToken` environment variable.
 
 

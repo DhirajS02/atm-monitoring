@@ -1,13 +1,19 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI definition",
-    "version": "v0"
+    "title": "ATM Monitoring API",
+    "description": "API documentation for ATM Monitoring System",
+    "version": "v1"
   },
   "servers": [
     {
       "url": "http://localhost:8081/atm-monitoring",
       "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "paths": {
@@ -33,7 +39,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TokenResponse"
                 }
               }
             }
@@ -49,6 +55,14 @@
         "summary": "Get video logs by time range",
         "operationId": "findByTimeRange",
         "parameters": [
+          {
+            "name": "atmId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "startTime",
             "in": "query",
@@ -435,6 +449,18 @@
   },
   "components": {
     "schemas": {
+      "TokenResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "VideoLog": {
         "type": "object",
         "properties": {
@@ -479,7 +505,11 @@
             "format": "date-time"
           },
           "status": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "SUCCESS",
+              "FAILED"
+            ]
           }
         }
       },
@@ -511,6 +541,14 @@
             "type": "string"
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "name": "bearerAuth",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

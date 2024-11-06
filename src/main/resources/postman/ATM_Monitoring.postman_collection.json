@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "23bd8cc5-fb4f-417c-b01d-ea37faf50110",
+		"name": "ATM_Monitoring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12056089"
+	},
+	"item": [
+		{
+			"name": "CustomerCount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/transactions/customers/count/24-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"transactions",
+						"customers",
+						"count",
+						"24-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FilterByTransactionType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/transactions?transactionType=Cash Withdrawal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "transactionType",
+							"value": "Cash Withdrawal"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VideologsByTxnId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTYiLCJpc3MiOiJLaW5lY3RpdmUiLCJpYXQiOjE3MzA4NDMxNjksImV4cCI6MTczMTAxNTk2OX0.CVgZHIUWeaxor9y-_V6yhr3v8Xw8-B5lDlIf57lb1Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/video-logs/atm/ATM123/transaction/txn001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"video-logs",
+						"atm",
+						"ATM123",
+						"transaction",
+						"txn001"
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2024-10-12T10:00:00Z",
+							"disabled": true
+						},
+						{
+							"key": "endTime",
+							"value": "2024-10-13T12:00:00Z",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VideologsByCustomer&Timerange",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTYiLCJpc3MiOiJLaW5lY3RpdmUiLCJpYXQiOjE3MzA4NDMxNjksImV4cCI6MTczMTAxNTk2OX0.CVgZHIUWeaxor9y-_V6yhr3v8Xw8-B5lDlIf57lb1Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/video-logs/atm/ATM123/customer/cust001?startTime=2024-11-02T10:00:00Z&endTime=2024-11-04T10:00:00Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"video-logs",
+						"atm",
+						"ATM123",
+						"customer",
+						"cust001"
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2024-11-02T10:00:00Z"
+						},
+						{
+							"key": "endTime",
+							"value": "2024-11-04T10:00:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VideologsByTimerange",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTYiLCJpc3MiOiJLaW5lY3RpdmUiLCJpYXQiOjE3MzA4NDMxNjksImV4cCI6MTczMTAxNTk2OX0.CVgZHIUWeaxor9y-_V6yhr3v8Xw8-B5lDlIf57lb1Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/video-logs/atm/ATM123?startTime=2024-10-11T09:32:00Z&endTime=2024-10-13T10:00:00Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"video-logs",
+						"atm",
+						"ATM123"
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2024-10-11T09:32:00Z"
+						},
+						{
+							"key": "endTime",
+							"value": "2024-10-13T10:00:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListFailures",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTYiLCJpc3MiOiJLaW5lY3RpdmUiLCJpYXQiOjE3MjkwMjc2MzEsImV4cCI6MTcyOTIwMDQzMX0.0TveX1cw5NOEzE7cE_HrbywUz02YXdr9o3kNX6tIa7M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/failures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"failures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();",
+							"let token = jsonResponse.token;",
+							"",
+							"// Set the token in the environment variable",
+							"pm.environment.set(\"jwtToken\", token);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/atm-monitoring/v1/generate-token?empCode=123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"atm-monitoring",
+						"v1",
+						"generate-token"
+					],
+					"query": [
+						{
+							"key": "empCode",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

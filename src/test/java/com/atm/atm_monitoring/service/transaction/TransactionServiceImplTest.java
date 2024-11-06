@@ -1,5 +1,6 @@
 package com.atm.atm_monitoring.service.transaction;
 
+import com.atm.atm_monitoring.enums.TransactionStatus;
 import com.atm.atm_monitoring.enums.TransactionType;
 import com.atm.atm_monitoring.exceptions.TransactionTypeNotAvailableException;
 import com.atm.atm_monitoring.model.Transaction;
@@ -53,8 +54,8 @@ class TransactionServiceImplTest {
 
     public List<Transaction> mockTransactions()
     {
-        Transaction transaction1 = new Transaction("txn001", "cust001", TransactionType.CASH_WITHDRAWAL, 150.00, Instant.now().minusSeconds(60 * 60 * 22), "SUCCESS");
-        Transaction transaction2 = new Transaction("txn002", "cust002", TransactionType.DEPOSIT, 500.00, Instant.now().minusSeconds(60 * 60 * 23), "SUCCESS");
+        Transaction transaction1 = new Transaction("txn001", "cust001", TransactionType.CASH_WITHDRAWAL, 150.00, Instant.now().minusSeconds(60 * 60 * 22), TransactionStatus.SUCCESS);
+        Transaction transaction2 = new Transaction("txn002", "cust002", TransactionType.DEPOSIT, 500.00, Instant.now().minusSeconds(60 * 60 * 23), TransactionStatus.SUCCESS);
         return Arrays.asList(transaction1,transaction2);
     }
 }

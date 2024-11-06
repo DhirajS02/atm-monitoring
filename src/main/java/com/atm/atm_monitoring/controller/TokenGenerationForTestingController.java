@@ -1,10 +1,14 @@
 package com.atm.atm_monitoring.controller;
 
+import com.atm.atm_monitoring.model.TokenResponse;
 import com.atm.atm_monitoring.util.JwtUtil;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.Instant;
 
 /**
  * REST controller for generating JWT tokens for testing purposes.
@@ -25,7 +29,8 @@ public class TokenGenerationForTestingController {
      * @return a JWT access token for the specified employee code.
      */
     @PostMapping("/generate-token")
-    public String generateAccessToken(@RequestParam("empCode") String empCode) {
-        return jwtUtil.generateAccessToken(empCode);
+    public ResponseEntity<TokenResponse> generateAccessToken(@RequestParam("empCode") String empCode) {
+        final var token = jwtUtil.generateAccessToken(empCode);
+        return ResponseEntity.ok(new TokenResponse(token, Instant.now()));
     }
 }

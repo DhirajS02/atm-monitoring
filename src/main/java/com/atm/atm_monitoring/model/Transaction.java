@@ -1,5 +1,6 @@
 package com.atm.atm_monitoring.model;
 
+import com.atm.atm_monitoring.enums.TransactionStatus;
 import com.atm.atm_monitoring.enums.TransactionType;
 
 import java.time.Instant;
@@ -10,7 +11,7 @@ public record Transaction(
         TransactionType transactionType,  // Type of transaction (e.g., "WITHDRAWAL", "DEPOSIT")
         double amount,                // Amount involved in the transaction
         Instant timestamp,            // Timestamp when the transaction occurred
-        String status                 // Status of the transaction (e.g., "SUCCESS", "FAILED")
+        TransactionStatus status          // Status of the transaction (e.g., "SUCCESS", "FAILED")
 )
 {
 
